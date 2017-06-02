@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-pod-with-alagent
+  labels:
+    app: web
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      ports:
+        - containerPort: 80
+    - name: al-agent-sigterm
+      image: wellysiauw/al_agent_sigterm:latest
+      args:
+        - "start"
+        - "vaporator.alertlogic.com"
+        - "ENTER UNIQUE REG KEY"
+        - "ENTER USER API KEY"
+        - "ENTER CID"
+        - "DEN"
